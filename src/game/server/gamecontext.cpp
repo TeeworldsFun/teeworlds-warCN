@@ -847,7 +847,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
                     SendChatTarget(ClientID, "Mod作者Neox Mod翻译者FlowerFell-Sans.");
                     SendChatTarget(ClientID, "Mod源码：https://github.com/teeworldsCNFun/teeworlds-war");
                 }
-                else if(!str_comp_nocase(pMsg->m_pMessage, "/healer"))
+                else if(!str_comp_nocase(pMsg->m_pMessage, "/h"))
                 {
                     if(m_apPlayers[ClientID]->GetClass() == CLASS_HEALER)
                     {
@@ -886,21 +886,36 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
                 }
                 else if(!str_comp_nocase(pMsg->m_pMessage, "/cmdlist"))
                 {
-                    SendChatTarget(ClientID, "~~~~CMDLIST~~~~");
+                    SendChatTarget(ClientID, "~~~~~~~~指令列表~~~~~~~~");
                     SendChatTarget(ClientID, "/info - 关于这个服务器");
+                    SendChatTarget(ClientID, "/h - 成为医疗兵");
+                    SendChatTarget(ClientID, "/s - 成为士兵");
+                    SendChatTarget(ClientID, "/w - 成为巫师");
+		    SendChatTarget(ClientID, "/ch - 显示角色帮助");
+                }
+                else
+                    SendChatTarget(ClientID, "不存在这个指令! 尝试 \"/cmdlist\".");
+
+                }
+                else if(!str_comp_nocase(pMsg->m_pMessage, "/ch"))
+                {
+                    SendChatTarget(ClientID, "~~~~~~~~~~角色帮助~~~~~~~~~~");
+		    SendChatTarget(ClientID, "医疗兵：可以放置回血区，自己每秒回一滴血/甲，红队回血区显示为榴弹炮，蓝队为等离子体(激光点)，标志为心♥和无线跳");
+                    SendChatTarget(ClientID, "士兵：身边会有一把武士刀证明他的角色是士兵，奔跑速度快，手枪按住自动发射，无限子弹而且发射速度更快");
+		    SendChatTarget(ClientID, "巫师：拥有一个助手（用榴弹炮显示），可以发射火球，无线跳");
                     SendChatTarget(ClientID, "/h - 成为医疗兵");
                     SendChatTarget(ClientID, "/s - 成为士兵");
                     SendChatTarget(ClientID, "/w - 成为巫师");
                 }
                 else
-                    SendChatTarget(ClientID, "This command doesn't exist ! Try \"/cmdlist\".");
+                    SendChatTarget(ClientID, "不存在这个命令! 尝试 \"/cmdlist\".");
 
                 return;
             }
 
             if(g_Config.m_InsultProtection && IsFilteredWord(pMsg->m_pMessage))
             {
-                Server()->Kick(ClientID, "(AutoKick) Insults are not allowed !");
+                Server()->Kick(ClientID, "(自动踢) 不许说脏话 !");
                 return;
             }
 
