@@ -25,7 +25,7 @@ void CSoldierDec::Reset()
 	GameServer()->m_World.DestroyEntity(this);
 }
 
-void CSoldierDec::Fire()
+void CSoldierDec::FireFFS()
 {
     if(m_ReloadTimer)
         return;
