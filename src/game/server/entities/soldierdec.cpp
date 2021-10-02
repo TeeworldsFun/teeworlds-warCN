@@ -25,58 +25,6 @@ void CSoldierDec::Reset()
 	GameServer()->m_World.DestroyEntity(this);
 }
 
-void CSoldierDec::FireFFS()
-{
-    if(m_ReloadTimer)
-        return;
-
-    for(int i = 0; i < MAX_CLIENTS; i++)
-    {
-        CCharacter* pHit = GameServer()->GetPlayerChar(i);
-
-        if(!pHit)
-            continue;
-
-        if(pHit->GetPlayer()->GetTeam() == GameServer()->m_apPlayers[m_Owner]->GetTeam())
-            continue;
-
-        if(distance(pHit->m_Pos, m_Pos) > 1000)
-            continue;
-
-        if(GameServer()->Collision()->IntersectLine(m_Pos, pHit->m_Pos, NULL, NULL))
-            continue;
-
-        vec2 Dir = normalize(pHit->m_Pos - m_Pos);
-
-        new CLaserFFS(&GameServer()->m_World, m_Owner, Dir, m_Pos);
-        m_ReloadTimer = Server()->TickSpeed() * 2;
-
-        return;
-    }
-
-    for(int i = 0; i < 2; i ++)
-    {
-        CFlag* pFlag = GameServer()->m_apFlags[i];
-
-        if(pFlag->m_Team == GameServer()->m_apPlayers[m_Owner]->GetTeam())
-            continue;
-
-        if(distance(m_Pos, pFlag->m_Pos) > 1000)
-            continue;
-
-        if(GameServer()->Collision()->IntersectLine(m_Pos, pFlag->m_Pos, NULL, NULL))
-            continue;
-
-        vec2 Dir = normalize(pFlag->m_Pos - m_Pos);
-
-        new CLaserFFS(&GameServer()->m_World, m_Owner, Dir, m_Pos);
-        m_ReloadTimer = Server()->TickSpeed() * 2;
-
-        return;
-    }
-}
-
-
 void CSoldierDec::Tick()
 {
     if(!GameServer()->GetPlayerChar(m_Owner))
