@@ -6,6 +6,9 @@
 #include <game/generated/protocol.h>
 #include <game/server/gamecontext.h>
 #include "soldierdec.h"
+#include "flag.h"
+#include "ffslaser.h"
+
 
 CSoldierDec::CSoldierDec(CGameWorld *pGameWorld, int Owner)
 : CEntity(pGameWorld, CGameWorld::ENTTYPE_PROJECTILE)
