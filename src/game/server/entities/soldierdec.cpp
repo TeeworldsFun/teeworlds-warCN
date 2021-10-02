@@ -33,13 +33,13 @@ void CSoldierDec::Tick()
 
     vec2 CharPos = GameServer()->GetPlayerChar(m_Owner)->m_Pos;
 
-    m_Pos = CharPos + vec2(0, -20);
+    m_Pos = CharPos + vec2(-40, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(0, -20);
+        m_Pos = CharPos + vec2(40, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(0, -20);
+        m_Pos = CharPos + vec2(-40, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(0, -20);
+        m_Pos = CharPos + vec2(40, 0);
 }
 
 void CSoldierDec::Snap(int SnappingClient)
@@ -50,5 +50,6 @@ void CSoldierDec::Snap(int SnappingClient)
 
 	pObj->m_X = (int)m_Pos.x;
 	pObj->m_Y = (int)m_Pos.y;
-	pObj->m_Type = ENTITY_ARMOR_1;
+	pObj->m_Type = POWERUP_WEAPON;
+	pObj->m_Subtypr = WEAPON_RIFLE;
 }
