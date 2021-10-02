@@ -2,7 +2,7 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* Copyright � 2013 Neox.                                                                                                */
+/* Copyright © 2013 Neox.                                                                                                */
 /* If you are missing that file, acquire a complete release at https://www.teeworlds.com/forum/viewtopic.php?pid=106707  */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -718,20 +718,20 @@ void CCharacter::HandleWar()
 
     char aBuf[512];
     char aPast[512];
-    str_format(aPast, sizeof(aPast), "Health : %d/%d\nArmor : %d/%d", m_Health, m_pPlayer->TotalHP(), m_Armor, m_pPlayer->TotalAP());
+    str_format(aPast, sizeof(aPast), "血量 : %d/%d\n甲 : %d/%d", m_Health, m_pPlayer->TotalHP(), m_Armor, m_pPlayer->TotalAP());
     switch(m_pPlayer->GetClass())
     {
     case CLASS_HEALER:
-        str_format(aBuf, sizeof(aBuf), "Healer\n%s\nSpecial circles : %d/2", aPast, m_pPlayer->GetSpecialAmount());
+        str_format(aBuf, sizeof(aBuf), "医疗兵\n%s\n特殊区域 : %d/2", aPast, m_pPlayer->GetSpecialAmount());
         break;
     case CLASS_SOLDIER:
-        str_format(aBuf, sizeof(aBuf), "Soldier\n%s", aPast);
+        str_format(aBuf, sizeof(aBuf), "士兵\n%s", aPast);
         break;
     case CLASS_WIZARD:
-        str_format(aBuf, sizeof(aBuf), "Wizard\n%s\nFire balls : %d/10", aPast, m_pPlayer->GetSpecialAmount());
+        str_format(aBuf, sizeof(aBuf), "巫师\n%s\n火球 : %d/10", aPast, m_pPlayer->GetSpecialAmount());
         break;
     default:
-        str_format(aBuf, sizeof(aBuf), "Choose a class !\n/healer - Become a healer !\n/soldier - Become a soldier !\n/wizard - Become a wizard !");
+        str_format(aBuf, sizeof(aBuf), "选一个职业！ !\n输入/h - 成为医疗兵 !\n输入/s - 成为士兵 !\n输入/w - 成为巫师 !");
         break;
     }
     GameServer()->SendBroadcast(aBuf, m_pPlayer->GetCID());
