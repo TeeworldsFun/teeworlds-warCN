@@ -33,7 +33,7 @@ void CSoldierDec::Tick()
 
     vec2 CharPos = GameServer()->GetPlayerChar(m_Owner)->m_Pos;
 
-    m_Pos = CharPos + vec2(0, -60);
+    m_Pos = CharPos + vec2(0, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
         m_Pos = CharPos + vec2(0, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
