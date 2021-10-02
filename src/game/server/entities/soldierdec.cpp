@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* Copyright © 2013 Neox.                                                                                                */
+/* Copyright Â© 2013 Neox.                                                                                                */
 /* If you are missing that file, acquire a complete release at https://www.teeworlds.com/forum/viewtopic.php?pid=106707  */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -35,11 +35,11 @@ void CSoldierDec::Tick()
 
     m_Pos = CharPos + vec2(0, -60);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(0, 60);
+        m_Pos = CharPos + vec2(0, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(-60, 0);
+        m_Pos = CharPos + vec2(0, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(60, 0);
+        m_Pos = CharPos + vec2(0, 0);
 }
 
 void CSoldierDec::Snap(int SnappingClient)
@@ -50,6 +50,5 @@ void CSoldierDec::Snap(int SnappingClient)
 
 	pObj->m_X = (int)m_Pos.x;
 	pObj->m_Y = (int)m_Pos.y;
-	pObj->m_Type = POWERUP_WEAPON;
-	pObj->m_Subtype = WEAPON_NINJA;
+	pObj->m_Type = ENTITY_ARMOR;
 }
