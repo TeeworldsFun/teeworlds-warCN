@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* Copyright © 2013 Neox.                                                                                                */
+/* Copyright Â© 2013 Neox.                                                                                                */
 /* If you are missing that file, acquire a complete release at https://www.teeworlds.com/forum/viewtopic.php?pid=106707  */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -50,5 +50,5 @@ void CHealerDec::Snap(int SnappingClient)
 
 	pObj->m_X = (int)m_Pos.x;
 	pObj->m_Y = (int)m_Pos.y;
-	pObj->m_Type = POWERUP_HEALTH;
+	pObj->m_Type = WEAPON_RIFLE;
 }
