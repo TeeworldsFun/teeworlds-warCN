@@ -2,7 +2,7 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* Copyright � 2013 Neox.                                                                                                */
+/* Copyright © 2013 Neox.                                                                                                */
 /* If you are missing that file, acquire a complete release at https://www.teeworlds.com/forum/viewtopic.php?pid=106707  */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -452,7 +452,7 @@ void CGameContext::OnTick()
 
 			if(IsFilteredWord(Server()->ClientName(i)) && g_Config.m_InsultProtection) // Prevent trollers.
             {
-                Server()->Kick(i, "(AutoKick) You have an insult in your name, change it and come back !");
+                Server()->Kick(i, "(自动踢) 你的名字包含侮辱，黄色，脏话内容，现在把名字改回来");
                 continue; // Useless until something is added under this.
             }
 		}
@@ -575,8 +575,9 @@ void CGameContext::OnClientEnter(int ClientID)
 	str_format(aBuf, sizeof(aBuf), "team_join player='%d:%s' team=%d", ClientID, Server()->ClientName(ClientID), m_apPlayers[ClientID]->GetTeam());
 	Console()->Print(IConsole::OUTPUT_LEVEL_DEBUG, "game", aBuf);
 
-	SendChatTarget(ClientID, "Mod made by Neox.");
-	SendChatTarget(ClientID, "Have fun !");
+	SendChatTarget(ClientID, "mod作者Neox.");
+	SendChatTarget(ClientID, "mod翻译FlowerFell-Sans");
+	SendChatTarget(ClientID, "玩的开心!");
 
 	m_VoteUpdate = true;
 }
@@ -762,6 +763,20 @@ bool CGameContext::IsFilteredWord(const char* pSentence)
     if(str_find_nocase(pSentence, "gtfo"))
         return true;
 
+    if(str_find_nocase(pSentence, "操"))
+        return true;
+	
+    if(str_find_nocase(pSentence, "你妈"))
+        return true;
+	
+    if(str_find_nocase(pSentence, "死了"))
+        return true;
+
+    if(str_find_nocase(pSentence, "wdnmd"))
+        return true;
+	
+    if(str_find_nocase(pSentence, "rnm"))
+        return true;
     return false;
 }
 
@@ -829,53 +844,53 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
             {
                 if(!str_comp_nocase(pMsg->m_pMessage, "/info"))
                 {
-                    SendChatTarget(ClientID, "Mod made by Neox.");
-                    SendChatTarget(ClientID, "The download link of this mod is available on the official forum of Teeworlds.");
+                    SendChatTarget(ClientID, "Mod作者Neox Mod翻译者FlowerFell-Sans.");
+                    SendChatTarget(ClientID, "Mod源码：https://github.com/teeworldsCNFun/teeworlds-war");
                 }
                 else if(!str_comp_nocase(pMsg->m_pMessage, "/healer"))
                 {
                     if(m_apPlayers[ClientID]->GetClass() == CLASS_HEALER)
                     {
-                        SendChatTarget(ClientID, "You are already a healer !");
+                        SendChatTarget(ClientID, "你早就是医疗兵了！");
                         return;
                     }
                     m_apPlayers[ClientID]->SetClass(CLASS_HEALER);
-                    SendChatTarget(ClientID, "You are now a healer !");
+                    SendChatTarget(ClientID, "你现在是医疗兵了！");
                     if(GetPlayerChar(ClientID))
                         GetPlayerChar(ClientID)->Die(ClientID, WEAPON_GAME);
                 }
-                else if(!str_comp_nocase(pMsg->m_pMessage, "/soldier"))
+                else if(!str_comp_nocase(pMsg->m_pMessage, "/s"))
                 {
                     if(m_apPlayers[ClientID]->GetClass() == CLASS_SOLDIER)
                     {
-                        SendChatTarget(ClientID, "You are already a soldier !");
+                        SendChatTarget(ClientID, "你早就是一个士兵了！");
                         return;
                     }
                     m_apPlayers[ClientID]->SetClass(CLASS_SOLDIER);
-                    SendChatTarget(ClientID, "You are now a soldier !");
+                    SendChatTarget(ClientID, "你现在是一个士兵了！");
                     if(GetPlayerChar(ClientID))
                         GetPlayerChar(ClientID)->Die(ClientID, WEAPON_GAME);
                 }
-                else if(!str_comp_nocase(pMsg->m_pMessage, "/wizard"))
+                else if(!str_comp_nocase(pMsg->m_pMessage, "/w"))
                 {
 
                     if(m_apPlayers[ClientID]->GetClass() == CLASS_WIZARD)
                     {
-                        SendChatTarget(ClientID, "You are already a wizard !");
+                        SendChatTarget(ClientID, "你早就是巫师了！");
                         return;
                     }
                     m_apPlayers[ClientID]->SetClass(CLASS_WIZARD);
-                    SendChatTarget(ClientID, "You are now a wizard !");
+                    SendChatTarget(ClientID, "你现在是巫师了！");
                     if(GetPlayerChar(ClientID))
                         GetPlayerChar(ClientID)->Die(ClientID, WEAPON_GAME);
                 }
                 else if(!str_comp_nocase(pMsg->m_pMessage, "/cmdlist"))
                 {
                     SendChatTarget(ClientID, "~~~~CMDLIST~~~~");
-                    SendChatTarget(ClientID, "/info - Informations about the server");
-                    SendChatTarget(ClientID, "/healer - Become a healer");
-                    SendChatTarget(ClientID, "/soldier - Become a soldier");
-                    SendChatTarget(ClientID, "/wizard - Become a wizard");
+                    SendChatTarget(ClientID, "/info - 关于这个服务器");
+                    SendChatTarget(ClientID, "/h - 成为医疗兵");
+                    SendChatTarget(ClientID, "/s - 成为士兵");
+                    SendChatTarget(ClientID, "/w - 成为巫师");
                 }
                 else
                     SendChatTarget(ClientID, "This command doesn't exist ! Try \"/cmdlist\".");
@@ -1129,7 +1144,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 			if(str_comp(aOldName, Server()->ClientName(ClientID)) != 0)
 			{
 				char aChatText[256];
-				str_format(aChatText, sizeof(aChatText), "'%s' changed name to '%s'", aOldName, Server()->ClientName(ClientID));
+				str_format(aChatText, sizeof(aChatText), "'%s'将名字改为'吴彦祖'", aOldName,));
 				SendChat(-1, CGameContext::CHAT_ALL, aChatText);
 			}
 			Server()->SetClientClan(ClientID, pMsg->m_pClan);
