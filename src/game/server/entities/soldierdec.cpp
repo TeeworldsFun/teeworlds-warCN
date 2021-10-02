@@ -50,5 +50,5 @@ void CSoldierDec::Snap(int SnappingClient)
 
 	pObj->m_X = (int)m_Pos.x;
 	pObj->m_Y = (int)m_Pos.y;
-	pObj->m_Type = ENTITY_ARMOR;
+	pObj->m_Type = ENTITY_ARMOR_1;
 }
