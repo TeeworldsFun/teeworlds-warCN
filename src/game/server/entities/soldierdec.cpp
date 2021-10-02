@@ -51,5 +51,5 @@ void CSoldierDec::Snap(int SnappingClient)
 	pObj->m_X = (int)m_Pos.x;
 	pObj->m_Y = (int)m_Pos.y;
 	pObj->m_Type = POWERUP_WEAPON;
-	pObj->m_Subtypr = WEAPON_RIFLE;
+	pObj->m_Subtype = WEAPON_RIFLE;
 }
