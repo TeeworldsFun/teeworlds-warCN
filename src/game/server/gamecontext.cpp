@@ -768,16 +768,30 @@ bool CGameContext::IsFilteredWord(const char* pSentence)
 	
     if(str_find_nocase(pSentence, "你妈"))
         return true;
+	 
+    if(str_find_nocase(pSentence, "傻逼"))
+        return true;
 	
+    /*
+    我觉得这个不算
     if(str_find_nocase(pSentence, "死了"))
         return true;
-
-    if(str_find_nocase(pSentence, "wdnmd"))
+    */	
+    if(str_find_nocase(pSentence, "nm"))
         return true;
 	
-    if(str_find_nocase(pSentence, "rnm"))
+    /*
+	if(str_find_nocase(pSentence, "rnm"))
         return true;
-    return false;
+    
+    if(str_find_nocase(pSentence, "cnm"))
+        return true;
+    */
+	
+    if(str_find_nocase(pSentence, "sb"))
+        return true;
+    
+	return false;
 }
 
 void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
