@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* Copyright © 2013 Neox.                                                                                                */
+/* Copyright Â© 2013 Neox.                                                                                                */
 /* If you are missing that file, acquire a complete release at https://www.teeworlds.com/forum/viewtopic.php?pid=106707  */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -110,6 +110,6 @@ void CWizardHelper::Snap(int SnappingClient)
 	pObj->m_Y = (int)m_Pos.y;
 	pObj->m_VelX = 1;
 	pObj->m_VelY = 1;
-	pObj->m_Type = WEAPON_GRENADE;
+	pObj->m_Type = WEAPON_HAMMER;
     pObj->m_StartTick = Server()->Tick() - 1;
 }
