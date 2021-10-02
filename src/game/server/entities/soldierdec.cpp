@@ -33,13 +33,13 @@ void CSoldierDec::Tick()
 
     vec2 CharPos = GameServer()->GetPlayerChar(m_Owner)->m_Pos;
 
-    m_Pos = CharPos + vec2(0, 0);
+    m_Pos = CharPos + vec2(10, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(0, 0);
+        m_Pos = CharPos + vec2(10, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(0, 0);
+        m_Pos = CharPos + vec2(10, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(0, 0);
+        m_Pos = CharPos + vec2(10, 0);
 }
 
 void CSoldierDec::Snap(int SnappingClient)
