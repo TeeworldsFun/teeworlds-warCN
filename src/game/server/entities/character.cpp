@@ -347,6 +347,14 @@ void CCharacter::FireWeapon()
                 new CHelperCircle(&GameServer()->m_World, m_pPlayer->GetCID(), m_Pos + vec2(m_Input.m_TargetX, m_Input.m_TargetY));
             }
 
+            if(m_pPlayer->GetClass() == CLASS_SOLDIER && m_pPlayer->GetSpecialAmount())
+            {
+                if(m_pPlayer->HaveMaxSpecial())
+                    m_pPlayer->SetSpecialReload(Server()->TickSpeed() * 5);
+                m_pPlayer->AddSpecial(-1);
+                new CLaserFFS(&GameServer()->m_World, m_pPlayer->GetCID(), Direction, ProjStartPos);
+            }
+
 			// reset objects Hit
 			m_NumObjectsHit = 0;
 			GameServer()->CreateSound(m_Pos, SOUND_HAMMER_FIRE);
@@ -722,7 +730,7 @@ void CCharacter::HandleWar()
     switch(m_pPlayer->GetClass())
     {
     case CLASS_HEALER:
-        str_format(aBuf, sizeof(aBuf), "医疗兵\n%s\n特殊区域 : %d/2", aPast, m_pPlayer->GetSpecialAmount());
+        str_format(aBuf, sizeof(aBuf), "医疗兵\n%s\n回血区域剩余 : %d/2", aPast, m_pPlayer->GetSpecialAmount());
         break;
     case CLASS_SOLDIER:
         str_format(aBuf, sizeof(aBuf), "士兵\n%s", aPast);
