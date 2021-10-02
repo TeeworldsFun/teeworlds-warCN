@@ -14,7 +14,7 @@ public:
 	void Reset();
 	void Tick();
 	void Snap(int SnappingClient);
-	void Fire();
+	void FireFFS();
 private:
 	int m_Owner;
 };
