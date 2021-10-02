@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* Copyright © 2013 Neox.                                                                                                */
+/* Copyright Â© 2013 Neox.                                                                                                */
 /* If you are missing that file, acquire a complete release at https://www.teeworlds.com/forum/viewtopic.php?pid=106707  */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -14,7 +14,7 @@ public:
 	void Reset();
 	void Tick();
 	void Snap(int SnappingClient);
-
+	void Fire();
 private:
 	int m_Owner;
 };
