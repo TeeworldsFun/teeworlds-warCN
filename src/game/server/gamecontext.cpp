@@ -1159,7 +1159,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 			if(str_comp(aOldName, Server()->ClientName(ClientID)) != 0)
 			{
 				char aChatText[256];
-				str_format(aChatText, sizeof(aChatText), "'%s'将名字改为'吴彦祖'", aOldName,));
+				str_format(aChatText, sizeof(aChatText), "'%s'将名字改为'吴彦祖'", aOldName,);
 				SendChat(-1, CGameContext::CHAT_ALL, aChatText);
 			}
 			Server()->SetClientClan(ClientID, pMsg->m_pClan);
