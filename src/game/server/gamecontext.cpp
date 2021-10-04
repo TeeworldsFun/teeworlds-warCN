@@ -576,7 +576,7 @@ void CGameContext::OnClientEnter(int ClientID)
 	Console()->Print(IConsole::OUTPUT_LEVEL_DEBUG, "game", aBuf);
 
 	SendChatTarget(ClientID, "Mod作者Neox.");
-	SendChatTarget(ClientID, "给爷好好玩 !"）；
+	SendChatTarget(ClientID, "给爷好好玩 !")；
 	SendChatTarget(ClientID, "医疗兵：可以放置回血区，自己每秒回一滴血/甲，红队回血区显示为榴弹炮，蓝队为等离子体(激光点)，标志为心和无线跳");
         SendChatTarget(ClientID, "士兵：身边会有一把武士刀证明他的角色是士兵，奔跑速度快，手枪按住自动发射，无限子弹而且发射速度更快");
 	SendChatTarget(ClientID, "巫师：拥有一个助手（用榴弹炮显示），可以发射火球，无限跳");
@@ -750,10 +750,10 @@ bool CGameContext::IsFilteredWord(const char* pSentence)
     if(str_find_nocase(pSentence, "艹"))
         return true;
 
-    if(str_find_nocase(pSentence, "你妈"))
+    if(str_find_nocase(pSentence, "你妈死了"))
         return true;
 
-    if(str_find_nocase(pSentence, "死了"))
+    if(str_find_nocase(pSentence, "吊"))
         return true;
 
     if(str_find_nocase(pSentence, "逼"))
