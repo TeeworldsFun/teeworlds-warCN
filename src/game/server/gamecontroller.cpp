@@ -19,7 +19,7 @@
 #include "entities/heartbox.h"
 #include "entities/soldierdec.h"
 #include "entities/healerdec.h"
-
+#include "entities/wtf.h"
 
 IGameController::IGameController(class CGameContext *pGameServer)
 {
@@ -182,7 +182,13 @@ bool IGameController::OnEntity(int Index, vec2 Pos)
 		SubType = WEAPON_NINJA;
 	}
 	else if(Index == ENTITY_HEARTBOX)
+	{
         new CHeartBox(&GameServer()->m_World, Pos);
+	}
+	else if(Index == ENTITY_WTF)
+	{
+	new CWTF(&GameServer()->m_World, Pos);
+	}
 
 	if(Type != -1)
 	{
