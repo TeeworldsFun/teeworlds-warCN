@@ -1,3 +1,8 @@
+Origin mod by Neox
+ps:Neox are alive!!!
+sorry for my bad english,↓ONLY CHINESE,CAUSE IS WARCN↓
+
+----------teeworlds--------copyright----------
 Copyright (c) 2012 Magnus Auvinen
 
 
