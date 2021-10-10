@@ -2,7 +2,7 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* Copyright © 2013 Neox.                                                                                                */
+/* Copyright ï¿½ 2013 Neox.                                                                                                */
 /* If you are missing that file, acquire a complete release at https://www.teeworlds.com/forum/viewtopic.php?pid=106707  */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -79,7 +79,7 @@ MACRO_CONFIG_INT(SvSpamprotection, sv_spamprotection, 1, 0, 1, CFGFLAG_SERVER, "
 // Flag
 MACRO_CONFIG_INT(FlagHealth, flag_health, 5000, 100, 100000, CFGFLAG_SERVER, "Flags health")
 MACRO_CONFIG_INT(HeartboxHealAmount, heartbox_heal_amount, 500, 1, 100000, CFGFLAG_SERVER, "Amount of health that gets the flag from heartboxes")
-MACRO_CONFIG_INT(DamageboxAmount, damagebox_amount, -500, -1, -10000, CFGFLAG_SERVER, "Sorry for my bad english,hit flag");
+MACRO_CONFIG_INT(DamageboxAmount, damagebox_amount, -100, -10000, -1, CFGFLAG_SERVER, "Sorry for my bad english,hit flag");
 
 // Healers
 MACRO_CONFIG_INT(HealersMaxHealth, healers_max_health, 15, 1, 1000, CFGFLAG_SERVER, "Healers max health")
@@ -103,6 +103,12 @@ MACRO_CONFIG_INT(WizardsMaxHealth, wizards_max_health, 15, 1, 1000, CFGFLAG_SERV
 MACRO_CONFIG_INT(WizardsMaxArmor, wizards_armor, 15, 1, 1000, CFGFLAG_SERVER, "Wizards max armor")
 MACRO_CONFIG_INT(WizardsSpawnHealth, wizards_spawn_health, 0, 0, 1000, CFGFLAG_SERVER, "Wizards spawn health (0 = max)")
 MACRO_CONFIG_INT(WizardsSpawnArmor, wizards_spawn_armor, 5, -1, 1000, CFGFLAG_SERVER, "Wizards spawn armor (-1 = max)")
+
+// Ninja
+MACRO_CONFIG_INT(NinjaMaxHealth, ninja_max_health, 5, 1, 1000, CFGFLAG_SERVER, "Ninja max health")
+MACRO_CONFIG_INT(NinjaMaxArmor, ninja_armor, 5, 1, 1000, CFGFLAG_SERVER, "Ninja max armor")
+MACRO_CONFIG_INT(NinjaSpawnHealth, ninja_spawn_health, 0, 0, 1000, CFGFLAG_SERVER, "Ninja spawn health (0 = max)")
+MACRO_CONFIG_INT(NinjaSpawnArmor, ninja_spawn_armor, 0, -1, 1000, CFGFLAG_SERVER, "Ninja spawn armor (-1 = max)")
 
 // Other
 MACRO_CONFIG_INT(InsultProtection, insult_protection, 0, 0, 1, CFGFLAG_SERVER, "Kick automaticly players if they are insulting")

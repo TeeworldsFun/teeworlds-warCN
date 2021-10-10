@@ -576,11 +576,11 @@ void CGameContext::OnClientEnter(int ClientID)
 	Console()->Print(IConsole::OUTPUT_LEVEL_DEBUG, "game", aBuf);
 
 	SendChatTarget(ClientID, "Mod作者Neox.");
-	SendChatTarget(ClientID, "给爷好好玩 !");
-	SendChatTarget(ClientID, "医疗兵：可以放置回血区，自己每秒回一滴血/甲，红队回血区显示为榴弹炮，蓝队为等离子体(激光点)，标志为光环");
+	SendChatTarget(ClientID, "玩的开心！");
+	SendChatTarget(ClientID, "医疗兵：可以放置回血区，自己每秒回一滴血/甲，红队回血区显示为榴弹炮，蓝队为等离子体(激光点)，标志为爱心");
         SendChatTarget(ClientID, "士兵：脚底有一把激光枪做装饰证明他的角色是士兵，奔跑速度快，手枪按住自动发射，无限子弹而且发射速度更快");
 	SendChatTarget(ClientID, "巫师：拥有一个助手（用光点显示），可以发射火球，无限跳");
-        SendChatTarget(ClientID, "/w - 成为医疗兵 /s - 成为士兵 /w - 成为巫师");
+        SendChatTarget(ClientID, "/w - 成为医疗兵 /s - 成为士兵 /w - 成为巫师 /n - 成为忍者");
 	m_VoteUpdate = true;
 }
 
@@ -832,8 +832,8 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
             {
                 if(!str_comp_nocase(pMsg->m_pMessage, "/info"))
                 {
-                    SendChatTarget(ClientID, "Mod made by Neox.");
-                    SendChatTarget(ClientID, "The download link of this mod is available on the official forum of Teeworlds.");
+                    SendChatTarget(ClientID, "Mod原作者Neox");
+                    SendChatTarget(ClientID, "改进版 by FlowerFell-Sans && CHNFun team");
                 }
                 else if(!str_comp_nocase(pMsg->m_pMessage, "/h"))
                 {
@@ -845,7 +845,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
                     m_apPlayers[ClientID]->SetClass(CLASS_HEALER);
                     SendChatTarget(ClientID, "你现在是医疗兵了 !");
                     if(GetPlayerChar(ClientID))
-                        GetPlayerChar(ClientID)->Die(ClientID, WEAPON_GAME);
+                        GetPlayerChar(ClientID)->Die(ClientID, WEAPON_RIFLE);
                 }
                 else if(!str_comp_nocase(pMsg->m_pMessage, "/s"))
                 {
@@ -857,7 +857,19 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
                     m_apPlayers[ClientID]->SetClass(CLASS_SOLDIER);
                     SendChatTarget(ClientID, "你现在是士兵了 !");
                     if(GetPlayerChar(ClientID))
-                        GetPlayerChar(ClientID)->Die(ClientID, WEAPON_GAME);
+                        GetPlayerChar(ClientID)->Die(ClientID, WEAPON_HAMMER);
+                }
+                else if(!str_comp_nocase(pMsg->m_pMessage, "/n"))
+                {
+                    if(m_apPlayers[ClientID]->GetClass() == CLASS_NINJA)
+                    {
+                        SendChatTarget(ClientID, "你早就是忍者了 !");
+                        return;
+                    }
+                    m_apPlayers[ClientID]->SetClass(CLASS_NINJA);
+                    SendChatTarget(ClientID, "你现在是忍者了 !");
+                    if(GetPlayerChar(ClientID))
+                        GetPlayerChar(ClientID)->Die(ClientID, WEAPON_NINJA);
                 }
                 else if(!str_comp_nocase(pMsg->m_pMessage, "/w"))
                 {
@@ -870,7 +882,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
                     m_apPlayers[ClientID]->SetClass(CLASS_WIZARD);
                     SendChatTarget(ClientID, "你现在是巫师了 !");
                     if(GetPlayerChar(ClientID))
-                        GetPlayerChar(ClientID)->Die(ClientID, WEAPON_GAME);
+                        GetPlayerChar(ClientID)->Die(ClientID, WEAPON_SELF);
                 }
                 else if(!str_comp_nocase(pMsg->m_pMessage, "/cmdlist"))
                 {
@@ -879,6 +891,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
                     SendChatTarget(ClientID, "/h - 成为医疗兵");
                     SendChatTarget(ClientID, "/s - 成为士兵");
                     SendChatTarget(ClientID, "/w - 成为巫师");
+					SendChatTarget(ClientID, "/n - 成为忍者");
                 }
                 else
                     SendChatTarget(ClientID, "This command doesn't exist ! Try \"/cmdlist\".");

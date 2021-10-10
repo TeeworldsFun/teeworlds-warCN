@@ -2,7 +2,7 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* Copyright © 2013 Neox.                                                                                                */
+/* Copyright ï¿½ 2013 Neox.                                                                                                */
 /* If you are missing that file, acquire a complete release at https://www.teeworlds.com/forum/viewtopic.php?pid=106707  */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -88,7 +88,7 @@ void CPickup::Tick()
                                 GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), m_Subtype);
                         }
                     }
-                    else if(pChr->GetPlayer()->GetClass() != CLASS_SOLDIER && pChr->GetPlayer()->GetClass() != CLASS_NONE)
+                    else if(pChr->GetPlayer()->GetClass() != CLASS_SOLDIER && pChr->GetPlayer()->GetClass() != CLASS_NINJA && pChr->GetPlayer()->GetClass() != CLASS_NONE)
                     {
                         if(pChr->GetPlayer()->HaveMaxSpecial())
                             return;

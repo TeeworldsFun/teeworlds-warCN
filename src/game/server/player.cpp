@@ -2,7 +2,7 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* Copyright © 2013 Neox.                                                                                                */
+/* Copyright ï¿½ 2013 Neox.                                                                                                */
 /* If you are missing that file, acquire a complete release at https://www.teeworlds.com/forum/viewtopic.php?pid=106707  */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -44,6 +44,7 @@ int CPlayer::TotalHP()
     case CLASS_HEALER: return g_Config.m_HealersMaxHealth; break;
     case CLASS_SOLDIER: return g_Config.m_SoldiersMaxHealth; break;
     case CLASS_WIZARD: return g_Config.m_WizardsMaxHealth; break;
+    case CLASS_NINJA: return g_Config.m_NinjaMaxHealth; break;
     }
 
     return 10;
@@ -56,6 +57,7 @@ int CPlayer::TotalAP()
     case CLASS_HEALER: return g_Config.m_HealersMaxArmor; break;
     case CLASS_SOLDIER: return g_Config.m_SoldiersMaxArmor; break;
     case CLASS_WIZARD: return g_Config.m_WizardsMaxArmor; break;
+    case CLASS_NINJA: return g_Config.m_NinjaMaxArmor; break;
     }
 
     return 10;
@@ -69,6 +71,7 @@ int CPlayer::SpawnHP()
         case CLASS_HEALER: Amount = g_Config.m_HealersSpawnHealth; break;
         case CLASS_SOLDIER: Amount = g_Config.m_SoldiersSpawnHealth; break;
         case CLASS_WIZARD: Amount = g_Config.m_SoldiersSpawnHealth; break;
+        case CLASS_NINJA: Amount = g_Config.m_NinjaSpawnHealth; break;
         default: Amount = TotalHP();
     }
 
@@ -86,6 +89,7 @@ int CPlayer::SpawnAP()
         case CLASS_HEALER: Amount = g_Config.m_HealersSpawnArmor; break;
         case CLASS_SOLDIER: Amount = g_Config.m_SoldiersSpawnArmor; break;
         case CLASS_WIZARD: Amount = g_Config.m_SoldiersSpawnArmor; break;
+        case CLASS_NINJA: Amount = g_Config.m_NinjaSpawnArmor; break;
         default: Amount = TotalAP();
     }
 
@@ -101,6 +105,8 @@ void CPlayer::SpecialAmmoMax()
         m_SpecialAmount = 2;
     else if(m_Class == CLASS_WIZARD)
         m_SpecialAmount = 10;
+	else if(m_Class == CLASS_NINJA)
+		m_SpecialAmount = 1;
 
     m_SpecialUseBack = 0;
 }
@@ -111,7 +117,8 @@ bool CPlayer::HaveMaxSpecial()
         return true;
     if(m_Class == CLASS_WIZARD && m_SpecialAmount == 10)
         return true;
-
+	if(m_Class == CLASS_NINJA && m_SpecialAmount == 1)
+		return true;
     return false;
 }
 
@@ -136,9 +143,11 @@ void CPlayer::Tick()
                     m_SpecialUseBack = Server()->TickSpeed() * 15;
                 else if(m_Class == CLASS_WIZARD)
                     m_SpecialUseBack = Server()->TickSpeed() * 5;
+				else if(m_Class == CLASS_NINJA)
+					m_SpecialUseBack = Server()->TickSpeed() * 15;
             }
         }
-        if(m_Class != CLASS_HEALER && m_Class != CLASS_WIZARD)
+        if(m_Class != CLASS_HEALER && m_Class != CLASS_WIZARD && m_Class != CLASS_NINJA)
             m_SpecialUseBack = 0;
         if(HaveMaxSpecial())
             m_SpecialUseBack = 0;

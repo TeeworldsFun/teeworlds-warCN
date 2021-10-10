@@ -2,7 +2,7 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/* Copyright © 2013 Neox.                                                                                                */
+/* Copyright ï¿½ 2013 Neox.                                                                                                */
 /* If you are missing that file, acquire a complete release at https://www.teeworlds.com/forum/viewtopic.php?pid=106707  */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -20,6 +20,7 @@
 #include "entities/soldierdec.h"
 #include "entities/healerdec.h"
 #include "entities/wtf.h"
+#include "entities/ninjadec.h"
 
 IGameController::IGameController(class CGameContext *pGameServer)
 {
@@ -189,6 +190,10 @@ bool IGameController::OnEntity(int Index, vec2 Pos)
 	{
 	new CWTF(&GameServer()->m_World, Pos);
 	}
+	/*else if(Index == ENTITY_HELP)
+	{
+	new C(&GameServer()->m_World, Pos);
+	}*/
 
 	if(Type != -1)
 	{
@@ -409,17 +414,22 @@ void IGameController::OnCharacterSpawn(class CCharacter *pChr)
         pChr->GiveWeapon(WEAPON_HAMMER, -1);
         pChr->GiveWeapon(WEAPON_GUN, 10);
     }
-    else
+    else if(pChr->GetPlayer()->GetClass() != CLASS_NONE && pChr->GetPlayer()->GetClass() != CLASS_NINJA)
     {
         pChr->GiveWeapon(WEAPON_HAMMER, -1);
         pChr->GiveWeapon(WEAPON_GUN, 10);
     }
-
+	else if(pChr->GetPlayer()->GetClass() == CLASS_NINJA)
+	{
+	pChr->GiveWeapon(WEAPON_NINJA, -1);
+	pChr->GiveNinja();
+	}
 	switch(pChr->GetPlayer()->GetClass())
 	{
 	    case CLASS_HEALER: new CHealerDec(&GameServer()->m_World, pChr->GetPlayer()->GetCID()); break;
 	    case CLASS_SOLDIER: new CSoldierDec(&GameServer()->m_World, pChr->GetPlayer()->GetCID()); break;
 	    case CLASS_WIZARD: new CWizardHelper(&GameServer()->m_World, pChr->GetPlayer()->GetCID()); break;
+		case CLASS_NINJA: new CNinjaDec(&GameServer()->m_World, pChr->GetPlayer()->GetCID()); break;
 	}
 
 	pChr->GetPlayer()->SpecialAmmoMax();

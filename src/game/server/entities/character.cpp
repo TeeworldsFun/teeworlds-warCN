@@ -125,7 +125,7 @@ void CCharacter::HandleNinja()
 	if(m_ActiveWeapon != WEAPON_NINJA)
 		return;
 
-	if ((Server()->Tick() - m_Ninja.m_ActivationTick) > (g_pData->m_Weapons.m_Ninja.m_Duration * Server()->TickSpeed() / 1000))
+	if ((Server()->Tick() - m_Ninja.m_ActivationTick) > (g_pData->m_Weapons.m_Ninja.m_Duration * Server()->TickSpeed() / 1000) && m_pPlayer->GetClass() != CLASS_NINJA)
 	{
 		// time's up, return
 		m_aWeapons[WEAPON_NINJA].m_Got = false;
@@ -297,7 +297,7 @@ void CCharacter::FireWeapon()
 	if(m_ActiveWeapon == WEAPON_GRENADE || m_ActiveWeapon == WEAPON_SHOTGUN || m_ActiveWeapon == WEAPON_RIFLE)
 		FullAuto = true;
 
-    if(m_pPlayer->GetClass() == CLASS_SOLDIER)
+    if(m_pPlayer->GetClass() == CLASS_SOLDIER || m_pPlayer->GetClass() == CLASS_NINJA)
         FullAuto = true;
 
 
@@ -521,6 +521,9 @@ void CCharacter::FireWeapon()
 
     if(m_pPlayer->GetClass() == CLASS_SOLDIER)
         m_ReloadTimer /= 1.5f;
+
+    if(m_pPlayer->GetClass() == CLASS_NINJA)
+        m_ReloadTimer /= 0.7f;
 }
 
 void CCharacter::HandleWeapons()
@@ -730,8 +733,11 @@ void CCharacter::HandleWar()
     case CLASS_WIZARD:
         str_format(aBuf, sizeof(aBuf), "巫师\n%s\n火球 : %d/10", aPast, m_pPlayer->GetSpecialAmount());
         break;
+    case CLASS_NINJA:
+        str_format(aBuf, sizeof(aBuf), "杀!!!!!");
+        break;
     default:
-        str_format(aBuf, sizeof(aBuf), "选一个职业！ !\n输入/h - 成为医疗兵 !\n输入/s - 成为士兵 !\n输入/w - 成为巫师 !");
+        str_format(aBuf, sizeof(aBuf), "选一个职业！ !\n输入/h - 成为医疗兵 !\n输入/s - 成为士兵 !\n输入/w - 成为巫师 !\n/n - 成为Ninja !");
         break;
     }
     GameServer()->SendBroadcast(aBuf, m_pPlayer->GetCID());
