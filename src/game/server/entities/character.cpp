@@ -737,7 +737,7 @@ void CCharacter::HandleWar()
         str_format(aBuf, sizeof(aBuf), "杀!!!!!");
         break;
     default:
-        str_format(aBuf, sizeof(aBuf), "选一个职业！ !\n输入/h - 成为医疗兵 !\n输入/s - 成为士兵 !\n输入/w - 成为巫师 !\n/n - 成为Ninja !");
+        str_format(aBuf, sizeof(aBuf), "选一个职业！ !\n输入/h - 成为医疗兵 !\n输入/s - 成为士兵 !\n输入/w - 成为巫师 !\n输入/n - 成为忍者 !");
         break;
     }
     GameServer()->SendBroadcast(aBuf, m_pPlayer->GetCID());
