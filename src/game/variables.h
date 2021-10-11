@@ -105,10 +105,10 @@ MACRO_CONFIG_INT(WizardsSpawnHealth, wizards_spawn_health, 0, 0, 1000, CFGFLAG_S
 MACRO_CONFIG_INT(WizardsSpawnArmor, wizards_spawn_armor, 5, -1, 1000, CFGFLAG_SERVER, "Wizards spawn armor (-1 = max)")
 
 // Ninja
-MACRO_CONFIG_INT(NinjaMaxHealth, ninja_max_health, 5, 1, 1000, CFGFLAG_SERVER, "Ninja max health")
-MACRO_CONFIG_INT(NinjaMaxArmor, ninja_armor, 5, 1, 1000, CFGFLAG_SERVER, "Ninja max armor")
+MACRO_CONFIG_INT(NinjaMaxHealth, ninja_max_health, 1, 1, 1000, CFGFLAG_SERVER, "Ninja max health")
+MACRO_CONFIG_INT(NinjaMaxArmor, ninja_armor, 0, 0, 1000, CFGFLAG_SERVER, "Ninja max armor")
 MACRO_CONFIG_INT(NinjaSpawnHealth, ninja_spawn_health, 0, 0, 1000, CFGFLAG_SERVER, "Ninja spawn health (0 = max)")
-MACRO_CONFIG_INT(NinjaSpawnArmor, ninja_spawn_armor, 0, -1, 1000, CFGFLAG_SERVER, "Ninja spawn armor (-1 = max)")
+MACRO_CONFIG_INT(NinjaSpawnArmor, ninja_spawn_armor, 0, 0, 1000, CFGFLAG_SERVER, "Ninja spawn armor (-1 = max)")
 
 // Other
 MACRO_CONFIG_INT(InsultProtection, insult_protection, 0, 0, 1, CFGFLAG_SERVER, "Kick automaticly players if they are insulting")
