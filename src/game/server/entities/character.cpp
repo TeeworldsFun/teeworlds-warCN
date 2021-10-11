@@ -140,7 +140,7 @@ void CCharacter::HandleNinja()
 
 	m_Ninja.m_CurrentMoveTime--;
 
-	if (m_Ninja.m_CurrentMoveTime == 0)
+	if (m_Ninja.m_CurrentMoveTime == 0 && m_pPlayer->GetClass() != CLASS_NINJA)
 	{
 		// reset velocity
 		m_Core.m_Vel = m_Ninja.m_ActivationDir*m_Ninja.m_OldVelAmount;
@@ -523,7 +523,7 @@ void CCharacter::FireWeapon()
         m_ReloadTimer /= 1.5f;
 
     if(m_pPlayer->GetClass() == CLASS_NINJA)
-        m_ReloadTimer /= 0.7f;
+        m_ReloadTimer /= 5.5f;
 }
 
 void CCharacter::HandleWeapons()

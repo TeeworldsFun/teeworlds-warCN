@@ -31,16 +31,17 @@ void CNinjaDec::Tick()
         Reset();
         return;
     }
+    GameServer()->CreateExplosion(m_Pos, m_Owner, -1, false);
 
     vec2 CharPos = GameServer()->GetPlayerChar(m_Owner)->m_Pos;
 
-    m_Pos = CharPos + vec2(0, -50);
+    m_Pos = CharPos + vec2(0, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(0, -50);
+        m_Pos = CharPos + vec2(0, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(0, -50);
+        m_Pos = CharPos + vec2(0, 0);
     if(GameServer()->Collision()->CheckPoint(m_Pos))
-        m_Pos = CharPos + vec2(0, -50);
+        m_Pos = CharPos + vec2(0, 0);
 }
 
 void CNinjaDec::Snap(int SnappingClient)
